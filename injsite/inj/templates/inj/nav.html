@@ -1,0 +1,30 @@
+<!--- Artcom Navigation for article page template -->
+{% extends "chart.html" %}
+
+{% block nav %}
+<div id="article-nav" class="narrow">
+	<div class="nav-element left"><a href="../welcome"><img src="/static/inj/liberty-cap-small.png" /></a></div>
+	<div class="nav-element center text">Interpretation of New Jersey</div>
+	<div class="nav-element right">
+		<div class="menu-container blue"><div class="menu"></div><div class="menu"></div><div class="menu"></div></div>
+	</div>
+</div>
+<a href="../welcome">
+<div id="article-nav" class="wide">
+	<div class="nav-element"><img src="/static/inj/seal.svg" height="150px" width="150px" alt="state seal" /></div>
+	<div class="nav-element center headline text">Interpretation of New Jersey</div>
+	<div class="nav-element right"><a href="../pulaski-skyway"><img src="/static/inj/skyway-circle.png" height="150px" /></a></div>
+</div>
+</a>
+{% endblock nav %}
+
+<div class="article">
+{% block content %}
+<p>Content goes here</p>
+{% endblock content %}
+</div>
+
+{% block index %}
+<p>Index goes here</p>
+{% endblock index %}
+

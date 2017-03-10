@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block nav %}
+<p>Nav bar</p>
+{% endblock nav %}
+
+{% block chart %}
+<div id="chart" class="chart-column hidden">
+
+{{ chart|safe }}
+
+</div>
+{% endblock %}
+
+{% block content %}
+{% endblock content %}
+
+{% block index %}
+{% endblock index %}

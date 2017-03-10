@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Interpretation of New Jersey</h1>
+
+<p>Welcome. </p>
+
+{% if category_list %}
+	<ul>
+	{% for category in main_cat %}
+		<li>{{ category.name }}</li>
+		<ul>
+		{% for subcat in category.category_set.all %}
+			<li><a href="{% url 'artcom:article' subcat.slug %}">{{ subcat.name }}</a></li>
+			<ul class="expand">Cranky
+			{% for article in subcat.article_set.all %}
+				<li><a href="{% url 'artcom:article' article.slug %}">{{ article.title }}</a></li>
+			{% endfor %}
+
+			{% for sub_two in subcat.category_set.all %}
+				<li><a href="{% url 'artcom:article' sub_two.slug %}">{{ sub_two.name }}</a></li>
+				<ul>
+				{% for article in sub_two.article_set.all %}
+					<li><a href="{% url 'artcom:article' article.slug %}">{{ article.title }}</a></li>
+				{% endfor %}
+
+				{% for sub_three in sub_two.category_set.all %}
+					<li><a href="{% url 'artcom:article' sub_three.slug %}">{{ sub_three.name }}</a></li>
+					<ul>
+					{% for article in sub_three.article_set.all %}
+						<li><a href="{% url 'artcom:article' article.slug %}">{{ article.title }}</a></li>
+					{% endfor %}
+					</ul>
+				{% endfor %}
+				</ul>
+			{% endfor %}
+			</ul>
+		{% endfor %}
+		</ul>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+{% endblock %}

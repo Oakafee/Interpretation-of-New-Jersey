@@ -1,0 +1,57 @@
+<!--- Artcom Article page template -->
+{% extends "nav.html" %}
+
+{% block title %}INJ:&nbsp;{{ article.title }}{% endblock title %}
+
+{% block content %}
+
+<div class="article">
+<h1>{{ article.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h2 class="title">{{ article.subtitle }}</h2>
+
+<p class="title"><em>{{ article.author }}</em>&nbsp;&#8226;&nbsp;{{ article.pub_date|date:"M d, Y" }}</p>
+
+<hr>
+{% if article.html_safe %}
+<p>{{ article.article_content|safe }}</p>
+{% else %}
+<p>{{ article.article_content|linebreaks }}</p>
+{% endif %}
+
+{% for commentary in article.commentary_set.all %}
+	<hr>
+	<p><b>{{ commentary.com_title }}</b><br />
+	{{ commentary.com_author }}<br />
+	<i>{{ commentary.pub_date }}</i></p>
+	
+	<p>{{ commentary.commentary|linebreaks }}</p>
+{% endfor %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div id="comments">
+	<div style="text-align:center;"><button id="add-comment" class="button text">Add your own interpretation</button></div>
+
+	<div id="comment-form">
+	<form action="{% url 'inj:addcomment' article.slug %}" method="post">
+	{% csrf_token %}
+		<input type="text" name="title" id="title" value="Title" /><br />
+		<input type="text" name="author" id="author" value="Your Name" /><br /><br />
+		<b>Interpretation: </b><br /><textarea name="comment" id="comment">Please type or paste your text here.</textarea><br />
+
+	<input id="submit" class="button text" type="submit" value="Interpret NJ!" />
+	</form>
+	</div>
+</div>
+
+<ul>
+{% for article in article.article_set.all %}
+	<li><a href="{% url 'inj:article' article.slug %}">{{ article.title }} </li>
+{% endfor %}
+</ul>
+</div>
+{% endblock content %}
+
