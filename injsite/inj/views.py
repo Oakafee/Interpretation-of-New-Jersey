@@ -19,10 +19,6 @@ def getchart():
 	}
 	return context
 
-def story(request):
-	html = getmaincats()
-	return HttpResponse(html)
-
 def getmaincats():
 	html = '<ul class="chart">'
 	article_list = Article.objects.order_by('slug')
@@ -72,7 +68,29 @@ def article(request, slug):
 	article = get_object_or_404(Article, slug=slug)
 	context = getchart()
 	context['article'] = article
-	return render(request, 'inj/article.html', context)
+	context['breadcrumbs'] = getbreadcrumbs(slug)
+	if article.comments:
+		return render(request, 'inj/article.html', context)
+	else:
+		return render(request, 'inj/article-main.html', context)
+
+def getbreadcrumbs(slug):
+	breadcrumbs = ""
+	parent = Article.objects.get(slug=slug).parent
+	if parent:
+		parent_list = [parent.title]
+		add_parent_to_list(parent_list)
+		parent_list.reverse()
+		for i in range(len(parent_list)):
+			breadcrumbs += parent_list[i] + ", "
+	return breadcrumbs
+
+def add_parent_to_list(parent_list):
+	parent = Article.objects.get(title=parent_list[-1]).parent
+	if parent:
+		parent_list.append(parent.title)
+		add_parent_to_list(parent_list)
+	return parent_list
 
 def addcomment(request, slug):
 	article = get_object_or_404(Article, slug=slug)

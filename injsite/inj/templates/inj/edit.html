@@ -14,7 +14,7 @@
 
 	<hr>
 	<div id="edit-form">
-		<form action="{% url 'artcom:changearticle' article.slug %}" method="post">
+		<form action="{% url 'inj:changearticle' article.slug %}" method="post">
 		{% csrf_token %}
 			Please edit the content: <br />
 			<textarea name="content" id="content" style="height: 200px; margin: 30px 0;">{{ article.article_content }}</textarea><br />
@@ -24,7 +24,7 @@
 		</form>
 	</div>
 
-	<p><a href="{% url 'artcom:article' article.slug %}">Go home without editing</a>
+	<p><a href="{% url 'inj:article' article.slug %}">Go home without editing</a>
 
 	{% for commentary in article.commentary_set.all %}
 		<hr>

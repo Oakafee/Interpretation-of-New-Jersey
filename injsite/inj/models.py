@@ -14,6 +14,7 @@ class Article(models.Model):
 	slug = models.SlugField(max_length=50, default="",)
 	main_cat = models.BooleanField(default=False)
 	html_safe = models.BooleanField(default=False)
+	comments = models.BooleanField(default=True)
 	def __str__(self):
 		return self.title
 	def save(self, *args, **kwargs):
@@ -25,7 +26,7 @@ class Commentary(models.Model):
 	article = models.ForeignKey(Article, on_delete=models.CASCADE)
 	com_title = models.CharField(max_length=200)
 	com_author = models.CharField(max_length=200)
-	commentary = models.CharField(max_length=1000)
+	commentary = models.CharField(max_length=50000)
 	pub_date = models.DateTimeField('date published', auto_now=True, editable=False,)
 	def __str__(self):
 		return self.com_title

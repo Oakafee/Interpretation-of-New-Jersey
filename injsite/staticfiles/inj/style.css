@@ -1,0 +1,232 @@
+/* Flag colors:
+
+#ff9c12 Orange
+#F01636 Red
+#005a9e Blue
+#F0DC82 Yellow
+#a86a40 Brown
+
+*/
+
+
+body {
+	background-color: #F0DC82;
+	font-family: Georgia, Times New Roman, Garamond, serif;
+	margin: 0;
+	line-height: 165%;
+}
+hr {
+	width: 95%;
+	color: black;
+	margin-top: -5px;
+	margin-bottom: 25px;
+}
+h1 {
+	font-weight: normal;
+	text-align: center;
+	line-height: 120%
+}
+h2 {
+	font-size: 16pt;
+	text-align: center;
+}
+.title {
+	font-weight: normal;
+	text-align: center;
+}
+.hidden {
+	display: none;
+}
+div.expand {
+	border: 1px solid black;
+	font-size: 12pt;
+	width: 20px;
+	margin: 4px 0;
+	text-align: center;
+	display: inline-block;
+}
+div.expand:hover {
+	background-color: grey;
+	color: white;
+}
+div.expand-placeholder {
+	font-size: 12pt;
+	width: 20px;
+	margin: 4px 0;
+	text-align: center;
+	display: inline-block;
+	color: white;
+}
+.button {
+	background-color: #005a9e;
+	color: white;
+	font-size: 14pt;
+	border: solid #005a9e 3px;
+	font-family: Georgia, Times New Roman, Garamond, serif;
+}
+.button:hover {
+	background-color: white;
+	color: #005a9e;
+}
+#nav {
+	background-color: #786938;
+	margin: 3px;
+}
+#article-nav {
+	width: 100%:
+	border: 1px solid #786938;
+	outline: 3px solid black;
+	padding: 1px;
+	background-color: #005a9e;
+	text-align: center;
+	background-clip: content-box;
+}
+.nav-element {
+	display: inline-block;
+	vertical-align: middle;
+	color: white;
+	margin: 1%;
+}
+.left {
+	text-align: left;
+}
+.center {
+	text-align: center;
+	width: 60%;
+}
+.right {
+	text-align: right;
+	width: 15%;
+}
+.text {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 15pt;
+}
+.headline {
+	font-size: 30pt;
+	line-height: 130%;
+	width: 63%;
+}
+.menu-container {
+	display: inline-block;
+	padding: 5px;
+}
+.menu {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+}
+.blue { background-color: #005a9e;}
+.white { background-color: white; color: #005a9e;}
+.menu-clicked {
+	background-color: gray;
+}
+.wide {
+	display: none;
+	height: 175px;
+}
+.chart-column {
+	position: absolute;
+	width: 60%;
+	min-width: 300px;
+	max-width: 400px;
+	background-color: white;
+	right: 0;
+	top: 65px;
+/*	box-shadow: -5px 5px 5px grey; */
+}
+ul.chart {
+	list-style-type: none;
+	line-height: 200%;
+}
+li {
+	padding-left: 0;
+	line-height: 120%;
+	margin-bottom: 12px;
+}
+#content {
+	margin: 0;
+	font-size: 13pt;
+	width: 100%;
+	word-wrap: break-word;
+}
+.article {
+	margin: 30px 20px;
+	width: 87%;
+}
+#comments {
+	margin: 30px 0;
+	text-align: center;
+}
+#comment-form {
+	margin: 15px;
+}
+input {
+	font-size: 14pt;
+	margin: 10px 0;
+	width: 95%;
+}
+textarea {
+	width: 95%;
+	height: 150px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+@media (min-width: 550px) {
+/* before, I had a single-column layout with
+	#content {
+		width: 60%;
+		margin: 50px 15%;
+	} */
+	.right { display: none; }
+	#content-overlay {
+		width: 60%;
+		display: inline-block;
+/* this width used to belong to .article below */
+	}
+	.article {
+		margin: 10px 2% 0 10%;
+		display: inline-block;
+	}
+	.narrow { display: none; }
+	.wide { display: block; }
+	h1 {
+		font-size: 40pt;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+	input, textarea {
+		width: 60%;
+	}
+	#html-safe {
+		width: 20px;
+	}
+	.chart-column {
+		position: static;
+		width: 30%;
+		max-width: none;
+		min-width: 100px;
+		background-color: #F0DC82;
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 50px;
+		box-shadow: none;
+	}
+}
+	div.expand-placeholder { color: #F0DC82; }
+@media (min-width: 1000px) {
+	.chart-column {
+		width: 25%;
+		margin-left: -5%;
+	}
+	#content-overlay {
+		margin: 0 5%;
+	}
+	.right {
+		display: inline-block;
+		width: inherit;
+	}
+	.headline { font-size: 33pt; }
+}

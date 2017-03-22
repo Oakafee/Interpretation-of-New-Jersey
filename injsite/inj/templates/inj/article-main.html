@@ -1,0 +1,28 @@
+<!--- Artcom Article page template -->
+{% extends "index.html" %}
+
+{% block title %}INJ:&nbsp;{{ article.title }}{% endblock title %}
+
+{% block content %}
+
+<div class="article">
+<h1>{{ article.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h2 class="title">{{ article.subtitle }}</h2>
+
+{% if article.html_safe %}
+<p>{{ article.article_content|safe }}</p>
+{% else %}
+<p>{{ article.article_content|linebreaks }}</p>
+{% endif %}
+
+<ul>
+{% for article in article.article_set.all %}
+	<li><a href="{% url 'inj:article' article.slug %}">{{ article.title }} </li>
+{% endfor %}
+</ul>
+</div>
+{% endblock content %}
+

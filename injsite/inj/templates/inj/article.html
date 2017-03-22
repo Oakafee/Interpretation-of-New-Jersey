@@ -1,11 +1,16 @@
 <!--- Artcom Article page template -->
-{% extends "nav.html" %}
+{% extends "index.html" %}
 
 {% block title %}INJ:&nbsp;{{ article.title }}{% endblock title %}
 
 {% block content %}
 
 <div class="article">
+
+{% if breadcrumbs %}
+	<div id="breadcrumbs">{{ breadcrumbs|safe }}</div>
+{% endif %}
+
 <h1>{{ article.title }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

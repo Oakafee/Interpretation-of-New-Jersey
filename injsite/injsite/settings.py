@@ -25,8 +25,11 @@ SECRET_KEY = '12f$b-4&vn44r5lb4__kiyy55_8=o&0$7tb9$xl)hhm$apxz6s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+	'limitless-tor-76634.herokuapp.com',
+	'localhost',
+	'127.0.0.1',
+]
 
 # Application definition
 
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'injsite.urls'
@@ -122,4 +126,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+# Heroku database stuff -J
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()

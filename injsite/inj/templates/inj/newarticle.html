@@ -3,7 +3,7 @@
 {% block content %}
 
 <div id="new-article-form">
-	<form action="{% url 'artcom:addarticle' %}" method="post">
+	<form action="{% url 'inj:addarticle' %}" method="post">
 	{% csrf_token %}
 		Title: <input type="text" name="title" id="title" value="" /><br />
 		Subtitle: <input type="text" name="subtitle" id="subtitle" value="" /><br />

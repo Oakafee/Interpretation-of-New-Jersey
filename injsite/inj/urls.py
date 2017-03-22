@@ -5,7 +5,6 @@ from . import views
 app_name = 'inj'
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
-	url(r'^story/$', views.story, name='story'),
 	url(r'^newarticle/$', views.newarticle, name='newarticle'),
 	url(r'^addarticle/$', views.addarticle, name='addarticle'),
 	url(r'^(?P<slug>[\w-]+)/$', views.article, name='article'),
