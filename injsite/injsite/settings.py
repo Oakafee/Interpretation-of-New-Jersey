@@ -131,5 +131,5 @@ STATIC_URL = '/static/'
 
 
 # Heroku database stuff -J
-#import dj_database_url
-#DATABASES['default'] =  dj_database_url.config()
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
