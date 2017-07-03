@@ -1,0 +1,63 @@
+<!--- Artcom Article page template -->
+{% extends "index.html" %}
+
+{% block title %}INJ: Welcome to New Jersey{% endblock title %}
+
+{% block content %}
+
+<div class="article">
+
+<h1 class="main">Welcome to New Jersey</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h2 class="title">Here you will find interpretive information on various New Jersey related topics</h2>
+
+<div class="centering-container">
+<div class="recent-additions articles">
+	<h3>Recent Articles:</h3>
+	<ul>
+	{% for article in latest_articles %}
+		<li>&quot;<a href="{% url 'inj:article' article.slug %}">{{ article.title }}</a>&quot;<br />
+		<div>by&nbsp;{{ article.contributor.first_name }}&nbsp;{{ article.contributor.last_name }}</div></p>
+	{% endfor %}
+	<li><div><a href="{% url 'inj:articlesbydate' %}">See all articles</a></div></li>
+	</ul>
+</div></div>
+
+<div class="centering-container">
+<div class="recent-additions comments">
+	<h3>Recent Commentary:</h3>
+	<ul>
+	{% for commentary in latest_comments %}
+		<li><a href="{% url 'inj:article' commentary.article.slug %}#commentary">{{ commentary.com_title }}</a><br />
+		<div><span style="font-style:normal;">on&nbsp;&quot;{{ commentary.article.title }},&quot;</span>&nbsp;by&nbsp;{{ commentary.com_author }}</div></li>
+	{% endfor %}
+	<li><div><a href="{% url 'inj:commentsbydate' %}">See all commentary</a></div></li>
+	</ul>
+</div></div>
+
+<p>The goal of this website is to contribute to our understanding, appreciation, and love of the Garden State. Please feel free to add your own interpretation at the bottom of each article. We also welcome <a href="../add-your-voice">article submissions</a> of all kinds about features of and experiences in the state. </p>
+
+<p>You can use the index on the right to browse our entire collection of articles. We divide our subject matter into three interpretive categories: </p>
+<br />
+
+<a href="../land"><div style="float:left;margin-right:25px;"><img src="/static/inj/land-home-page.jpg" alt="land" width="250px"/></div><h2>Land</h2></a>
+<p> The territory encompassing the state of New Jersey. We divide this small but diverse area by its Physiographic Provinces: the <a href="../coastal-plain">Coastal Plain</a>, the <a href="../piedmont">Piedmont</a>, the <a href="../highlands">Highlands</a>, and the <a href="../ridge-and-valley">Ridge and Valley</a>.</p>
+<div style="clear:both;"></div>
+<br />
+
+<a href="../land-use"><div style="float:left;margin-right:25px;"><img src="/static/inj/land-uee-home-page.jpg" alt="land-uee" width="250px"/></div><h2>Land Use</h2></a>
+<p>The way humanity uses the land. To categorize these interpretation, we divide the state into its <a href="../urban-core">Urban Core</a>, areas developed as <a href="../suburbs-and-sprawl">Suburbs and Sprawl</a>, and more far-flung <a href="../outlying-areas">Outlying Areas</a>.</p>
+<div style="clear:both;"></div>
+<br />
+
+<a href="../people"><div style="float:left;margin-right:25px;"><img src="/static/inj/shaq-home-page.jpeg" alt="shaq" width="250px"/></div><h2>People</h2></a>
+<p> The folks who inhabit the land. Here we include the categories of <a href="../culture">Culture</a>, <a href="../peoples">Peoples</a>, Politics and Biography. </p>
+<div style="clear:both;"></div>
+<br />
+
+<p>Please send us any <a href="../add-your-voice">comments</a> you may have. </p>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,17 @@
+<!--- Artcom Article page template -->
+{% extends "index.html" %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+
+<p>Register yourself as an Interpretation of New Jersey contributor! </p>
+<form action="{% url 'registration_register' %}" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" class="button text" value="Sign up" />
+</form>
+
+
+{% endblock content %}
+

@@ -17,7 +17,12 @@
 
 <h2 class="title">{{ article.subtitle }}</h2>
 
-<p class="title"><em>{{ article.author }}</em>&nbsp;&#8226;&nbsp;{{ article.pub_date|date:"M d, Y" }}</p>
+<p class="title"><em><a href="{% url 'inj:userpage' article.contributor.username %}">{{ article.contributor.first_name }}&nbsp;{{ article.contributor.last_name }}</a></em>&nbsp;&#8226;&nbsp;{{ article.pub_date|date:"M d, Y" }}</p>
+
+{% if user_auth %}
+<p><a href="{{ site.basurl }}/{{ article.slug }}/edit">Edit this article</a><br />
+<a href="{% url 'inj:newarticle' article.slug %}">+ Add child article</a></p>
+{% endif %} 
 
 <hr>
 {% if article.html_safe %}
@@ -26,6 +31,7 @@
 <p>{{ article.article_content|linebreaks }}</p>
 {% endif %}
 
+<div id="commentary">
 {% for commentary in article.commentary_set.all %}
 	<hr>
 	<p><b>{{ commentary.com_title }}</b><br />
@@ -34,6 +40,7 @@
 	
 	<p>{{ commentary.commentary|linebreaks }}</p>
 {% endfor %}
+</div>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -46,7 +53,7 @@
 		<input type="text" name="title" id="title" value="Title" /><br />
 		<input type="text" name="author" id="author" value="Your Name" /><br /><br />
 		<b>Interpretation: </b><br /><textarea name="comment" id="comment">Please type or paste your text here.</textarea><br />
-
+	<div class="g-recaptcha" data-sitekey="6LeV_yMUAAAAAJ9HffzAURNnahrxSynpqZUx4l-L"></div>
 	<input id="submit" class="button text" type="submit" value="Interpret NJ!" />
 	</form>
 	</div>
@@ -54,8 +61,18 @@
 
 <ul>
 {% for article in article.article_set.all %}
+	<li><a href="{% url 'inj:article' article.slug %}">{{ article.title }} </a></li>
+{% endfor %}
+</ul>
+
+<!---I don't think the below "theme" stuff is very useful, actually --->
+{% if article.theme.all %}
+<p><b>Other thematically related articles: </b></p>
+<ul>
+{% for article in article.theme.all %}
 	<li><a href="{% url 'inj:article' article.slug %}">{{ article.title }} </li>
 {% endfor %}
+{% endif %}
 </ul>
 </div>
 {% endblock content %}

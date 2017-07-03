@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
 	'limitless-tor-76634.herokuapp.com',
+	'www.interpretation-of-nj.com',
 	'localhost',
 	'127.0.0.1',
 ]
@@ -85,14 +86,14 @@ DATABASES = {
         'USER': 'Oakafee',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-
+ACCOUNT_ACTIVATION_DAYS = 7
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -108,13 +109,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'interpretation.of.nj'
+EMAIL_HOST_PASSWORD = "you'realoser9"
+EMAIL_USE_SSL = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 

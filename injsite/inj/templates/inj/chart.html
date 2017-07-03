@@ -7,6 +7,14 @@
 {% block chart %}
 <div id="chart" class="chart-column hidden">
 
+{% if user.is_authenticated %}
+<p class="chart-text">Welcome, <a href="{% url 'inj:userpage' user %}">{{ user.get_username }}</a>. <a href="{% url 'inj:logout' %}">Log out</a></p>
+{% else %}
+<p class="chart-text"><a href="{% url 'inj:login' %}">Log in</a> or <a href="{% url 'inj:registration_register' %}">create an account</p>
+{% endif %}
+
+<p class="chart-text"><a href="{% url 'inj:newarticle' None %}">+ Add Article</a></p>
+
 {{ chart|safe }}
 
 </div>

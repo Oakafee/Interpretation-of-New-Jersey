@@ -24,7 +24,12 @@ hr {
 h1 {
 	font-weight: normal;
 	text-align: center;
-	line-height: 120%
+	line-height: 120%;
+	margin-top: 10px;
+	margin-bottom: inherit;
+}
+h1.main {
+	margin-top:40px;
 }
 h2 {
 	font-size: 16pt;
@@ -33,6 +38,7 @@ h2 {
 .title {
 	font-weight: normal;
 	text-align: center;
+	margin-bottom: 25px;
 }
 .hidden {
 	display: none;
@@ -56,6 +62,11 @@ div.expand-placeholder {
 	text-align: center;
 	display: inline-block;
 	color: white;
+}
+div.chart-item {
+	display: inline-block;
+	max-width: 70%;
+	line-height: 150%;
 }
 .button {
 	background-color: #005a9e;
@@ -127,6 +138,9 @@ div.expand-placeholder {
 	display: none;
 	height: 175px;
 }
+#chart {
+	min-width: 250px;
+}
 .chart-column {
 	position: absolute;
 	width: 60%;
@@ -157,7 +171,7 @@ li {
 	width: 87%;
 }
 #comments {
-	margin: 30px 0;
+	margin: 40px 0;
 	text-align: center;
 }
 #comment-form {
@@ -173,6 +187,41 @@ textarea {
 	height: 150px;
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+#breadcrumbs {
+	text-align: center;
+	margin-top: 40px;
+}
+#breadcrumbs p {
+	margin:0;
+}
+.centering-container {
+	text-align:center;
+	display: inline-block;
+}
+.recent-additions {
+	text-align: left;
+	vertical-align: top;
+	display: inline-block;
+}
+.recent-additions ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+.recent-additions div {
+ font-size: 10pt;
+ margin-left: 20px;
+ font-style: italic;
+}
+.recent-additions h3 {
+	margin-left: 25px;
+}
+.helptext {
+	display: block;
+	font-size: 10pt;
+}
+label {
+	display: block;
 }
 @media (min-width: 550px) {
 /* before, I had a single-column layout with
@@ -195,7 +244,6 @@ textarea {
 	h1 {
 		font-size: 40pt;
 		text-align: center;
-		margin-bottom: 50px;
 	}
 	input, textarea {
 		width: 60%;
@@ -229,4 +277,8 @@ textarea {
 		width: inherit;
 	}
 	.headline { font-size: 33pt; }
+	div.chart-item { max-width: 80%; }
+	.centering-container {
+		width: 49%;
+}
 }

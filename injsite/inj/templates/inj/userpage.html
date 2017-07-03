@@ -1,0 +1,23 @@
+{% extends "nav.html" %}
+
+{% block content %}
+<div class="article">
+<h1>{{ contributor.first_name }}&nbsp{{ contributor.last_name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for article in articles %}
+	<p><a href="{% url 'inj:article' article.slug %}">{{ article.title }}</a> 
+	{% if user_auth %}
+	<span class="helptext">
+	<a href="{{ site.basurl }}/{{ article.slug }}/edit">edit</a>&nbsp;
+	&bull;&nbsp;<a href="{% url 'inj:delete' article.slug %}">delete</a>&nbsp;
+	&bull;&nbsp;<a href="{% url 'inj:newarticle' article.slug %}">add child</a></span>
+	{% endif %}
+	</p>
+{% endfor %}
+
+<p class="chart-text"><a href="{% url 'inj:newarticle' None %}">+ Add Article</a></p>
+</div>
+{% endblock %}
+

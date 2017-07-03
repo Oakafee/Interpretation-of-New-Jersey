@@ -1,0 +1,24 @@
+<!--- Artcom List by Date page template -->
+{% extends "index.html" %}
+
+{% block title %}INJ: All Articles by Date{% endblock title %}
+
+{% block content %}
+
+<div class="article">
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div>
+	<h3>All Articles, ordered by date:</h3>
+	<ul>
+	{% for article in article_list %}
+		<li>&quot;<a href="{% url 'inj:article' article.slug %}">{{ article.title }}</a>&quot;<br />
+		<div>by&nbsp;{{ article.author }}</div></li>
+	{% endfor %}
+	</ul>
+</div>
+
+</div>
+
+{% endblock %}

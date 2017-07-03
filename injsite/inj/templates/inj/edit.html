@@ -8,7 +8,7 @@
 
 	<h2>{{ article.subtitle }}</h2>
 
-	<p><b>{{ article.author }}</b></p>
+	<p><b>{{ article.contributor.first_name }}&nbsp;{{ article.contributor.last_name }}</b></p>
 
 	<p>{{ article.pub_date }}</p>
 
@@ -18,13 +18,20 @@
 		{% csrf_token %}
 			Please edit the content: <br />
 			<textarea name="content" id="content" style="height: 200px; margin: 30px 0;">{{ article.article_content }}</textarea><br />
-			<input type="radio" name="html-safe" id="html-safe" value=True />HTML <br />		
-			<input type="radio" name="html-safe" id="html-safe" value=False />Plain Text <br />
+		{% if article.html_safe %}
+				<input type="radio" name="html-safe" id="html-safe" value="True" checked=checked />HTML <br />		
+				<input type="radio" name="html-safe" id="html-safe" value="False" />Plain Text <br />
+		{% else %}
+				<input type="radio" name="html-safe" id="html-safe" value="True" />HTML <br />		
+				<input type="radio" name="html-safe" id="html-safe" value="False" checked=checked />Plain Text <br />
+		{% endif %}
 		<input type="submit"  class="button text" value="Save Changes" />
 		</form>
 	</div>
 
-	<p><a href="{% url 'inj:article' article.slug %}">Go home without editing</a>
+	<p><a href="{% url 'inj:article' article.slug %}">Go back to the article without editing</a>
+
+	<p><a href="{% url 'inj:delete' article.slug %}">Delete this article</a></p>
 
 	{% for commentary in article.commentary_set.all %}
 		<hr>

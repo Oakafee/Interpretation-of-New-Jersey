@@ -1,0 +1,15 @@
+{% extends "nav.html" %}
+
+{% block content %}
+<h2>Register as a Contributor to the Interpretation of New Jersey</h2>
+
+<form action="{% url 'inj:register' %}" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Sign up" />
+</form>
+
+
+ 
+{% endblock %}
+

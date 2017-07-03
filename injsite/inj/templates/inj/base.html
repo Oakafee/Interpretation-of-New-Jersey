@@ -5,6 +5,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'inj/style.css' %}" />
     <title>{% block title %}Interpretation of New Jersey{% endblock %}</title>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
@@ -24,11 +25,7 @@
 	</div>
     <div id="index">
         {% block index %}
-        <ul>
-            <li><a href="/artcom">Home</a></li>
-			<li><a href="{% url 'artcom:newcategory' %}">Add new category</a></li>
-			<li><a href="{% url 'artcom:newarticle' %}">Add new article</a></li>
-		</ul>
+
         {% endblock %}
     </div>
 <script src="{% static 'inj/jquery-3.1.1.js' %}"></script>

@@ -1,0 +1,15 @@
+<!--- Artcom Article page template -->
+{% extends "index.html" %}
+
+<div class="article">
+{% block title %}Activation didn't work{% endblock title %}
+
+{% block content %}
+
+<p>Sorry, but we were unable to activate your account. </p>
+
+<p>Maybe it will work if you <a href="{{ site.baseurl }}/accounts/activate/{{ activation_key }}">try again</a>? </p>
+
+{% endblock content %}
+</div>
+

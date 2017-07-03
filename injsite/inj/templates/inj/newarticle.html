@@ -2,14 +2,21 @@
 
 {% block content %}
 
-<div id="new-article-form">
+<div id="new-article-form" class="article">
+	<h2 class="title">Please Add Your Own, New Interpretive Article </h2>
 	<form action="{% url 'inj:addarticle' %}" method="post">
 	{% csrf_token %}
 		Title: <input type="text" name="title" id="title" value="" /><br />
 		Subtitle: <input type="text" name="subtitle" id="subtitle" value="" /><br />
-		Author: <input type="text" name="author" id="author" value="Jesse Fried" /><br />
-		Parent: <input type="text" name="parent" id="parent" value="" /><br />
-
+		Author: {{ user.first_name }}&nbsp;{{ user.last_name }}<br />
+		Parent article: <select name="parent" id="parent">
+		{% if parent %}
+			<option value="{{ parent }}" selected>{{ parent }}</option>
+		{% endif %}
+		{% for article in articles %}
+			<option value="{{ article }}">{{ article }}</option>
+		{% endfor %}
+		</select><br/ >
 
 <!---	Category: <select name="category">
 		{% for category in categories %}
@@ -19,8 +26,8 @@
 		
 		Content: <br /><textarea name="content" rows="10" cols="30" id="content">Please type or paste your text here.</textarea><br />
 
-		<input type="radio" name="html-safe" id="html-safe" value=True />HTML <br />		
-		<input type="radio" name="html-safe" id="html-safe" value=False />Plain Text <br />
+		<input type="radio" name="html-safe" id="html-safe" value="True" />HTML <br />		
+		<input type="radio" name="html-safe" id="html-safe" value="False" checked="checked" />Plain Text <br />
 	
 	<input type="submit" value="Add your article to INJ" />
 	</form>

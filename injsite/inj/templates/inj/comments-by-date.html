@@ -1,0 +1,24 @@
+<!--- Artcom List by Date page template -->
+{% extends "index.html" %}
+
+{% block title %}INJ: All Comments by Date{% endblock title %}
+
+{% block content %}
+
+<div class="article">
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div>
+	<h3>All Commentary:</h3>
+	<ul>
+	{% for commentary in comment_list %}
+		<li><a href="{% url 'inj:article' commentary.article.slug %}#commentary">{{ commentary.com_title }}</a><br />
+		<div><span style="font-style:normal;">on&nbsp;&quot;{{ commentary.article.title }},&quot;</span>&nbsp;by&nbsp;{{ commentary.com_author }}</div></li>
+	{% endfor %}
+	</ul>
+</div>
+
+</div>
+
+{% endblock %}

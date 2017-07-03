@@ -1,0 +1,11 @@
+Dear new contributor,
+
+We are excited to have you add your perspective to Interpretation of New Jersey.
+
+Please click on the below link to validate your email address and activate your account:
+
+http://www.interpretation-of-nj.com/accounts/activate/{{ activation_key }}
+
+Thanks,
+
+The Editors

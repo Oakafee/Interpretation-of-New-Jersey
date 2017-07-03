@@ -1,0 +1,21 @@
+{% extends "nav.html" %}
+
+{% block content %}
+<div class="article">
+	<h2 class="title">Delete article &quot;{{ article.title }}&quot;</h2>
+
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	<div style="text-align:center;">
+
+		<p>Are you sure you want to delete the article &quot;{{ article.title }}?&quot; </p>
+		<form action="{% url 'inj:delete' article.slug %}" method="post">
+		{% csrf_token %}
+			<input type="submit" class="button text" value="delete" />
+		</form>
+
+		<p><a href="{% url 'inj:article' article.slug %}">No, please take me back to the article.</a></p>
+	</div>
+</div>
+{% endblock %}
+
